@@ -1,0 +1,31 @@
+micronaut:
+  application:
+    name: prodict-catalog-micronaut-native
+  metrics:
+    enabled: true
+    export:
+      otlp:
+        enabled: true
+        protocol: http/protobuf
+        url: http://${OTEL_COLLECTOR_HOST:localhost}:${OTEL_COLLECTOR_PORT:4318}/v1/metrics
+        resource-attributes:
+          service.name: product-catalog-micronaut
+vertx:
+  pg:
+    host: ${POSTGRES_HOST:localhost}
+    port: 5432
+    database: product_catalog
+    username: postgres
+    password: postgres
+    maxPoolSize: 10
+
+otel:
+  traces:
+    exporter: otlp
+  metrics:
+    enabled: true
+    exporter: otlp
+  exporter:
+    otlp:
+      protocol: http/protobuf
+      endpoint: http://${OTEL_COLLECTOR_HOST:localhost}:${OTEL_COLLECTOR_PORT:4318}
