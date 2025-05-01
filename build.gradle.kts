@@ -1,5 +1,4 @@
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
-import io.micronaut.gradle.docker.NativeImageDockerfile
 
 plugins {
     id("io.micronaut.application") version "4.5.3"
@@ -29,9 +28,12 @@ dependencies {
     implementation("io.micronaut.reactor:micronaut-reactor")
     implementation("io.micronaut.sql:micronaut-vertx-pg-client")
 
+    implementation("io.micronaut:micronaut-management")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
     implementation("io.micronaut.tracing:micronaut-tracing-opentelemetry-annotation")
     implementation("io.micronaut.tracing:micronaut-tracing-opentelemetry-http")
     implementation("io.opentelemetry:opentelemetry-exporter-otlp")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-otlp")
 
 }
 
@@ -71,11 +73,12 @@ micronaut {
 graalvmNative {
     binaries {
         named("main") {
+            imageName = "product-catalog-micronaut-native"
             buildArgs.add("--initialize-at-build-time=kotlin.coroutines.intrinsics.CoroutineSingletons")
         }
     }
 }
 
 tasks.named<DockerBuildImage>("dockerBuild") {
-    images.set(listOf("prodict-catalog-micronaut-native"))
+    images.set(listOf("product-catalog-micronaut-native"))
 }
