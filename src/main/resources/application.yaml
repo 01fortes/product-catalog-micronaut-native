@@ -4,11 +4,10 @@ micronaut:
   metrics:
     enabled: true
     export:
-      export:
-        otlp:
-          enabled: true
-          uri: http://localhost:4317
-          service-name: product-catalog-micronaut-native
+      otlp:
+        enabled: true
+        uri: http://localhost:4317
+        service-name: product-catalog-micronaut-native
     tags:
       application: ${micronaut.application.name}
       job: ${micronaut.application.name}
@@ -24,7 +23,6 @@ vertx:
     password: postgres
     maxPoolSize: 10
 
-
 otel:
   traces:
     exporter: otlp
@@ -33,5 +31,6 @@ otel:
     exporter: otlp
   exporter:
     otlp:
+      enabled: true
       protocol: http/protobuf
       endpoint: http://${OTEL_COLLECTOR_HOST:localhost}:${OTEL_COLLECTOR_PORT:4318}

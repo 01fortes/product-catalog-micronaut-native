@@ -21,15 +21,10 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.yaml:snakeyaml")
 
-
-    testImplementation("io.micronaut:micronaut-http-client")
-
-
     implementation("io.micronaut.reactor:micronaut-reactor")
     implementation("io.micronaut.sql:micronaut-vertx-pg-client")
 
     implementation("io.micronaut:micronaut-management")
-    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
     implementation("io.micronaut.tracing:micronaut-tracing-opentelemetry-annotation")
     implementation("io.micronaut.tracing:micronaut-tracing-opentelemetry-http")
     implementation("io.opentelemetry:opentelemetry-exporter-otlp")

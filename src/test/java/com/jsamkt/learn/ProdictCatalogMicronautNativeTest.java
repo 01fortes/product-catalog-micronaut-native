@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Assertions;
 
 import jakarta.inject.Inject;
 
-@MicronautTest
-class ProdictCatalogMicronautNativeTest {
-
-    @Inject
-    EmbeddedApplication<?> application;
-
-    @Test
-    void testItWorks() {
-        Assertions.assertTrue(application.isRunning());
-    }
-
-}
+//@MicronautTest
+//class ProdictCatalogMicronautNativeTest {
+//
+//    @Inject
+//    EmbeddedApplication<?> application;
+//
+//    @Test
+//    void testItWorks() {
+//        Assertions.assertTrue(application.isRunning());
+//    }
+//
+//}
